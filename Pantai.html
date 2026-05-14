@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solusi Sampah di Pantai Bengkulu</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5fbff;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(0, 54, 99, 0.85);
+      backdrop-filter: blur(8px);
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    nav .menu {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd60a;
+      transform: scale(1.1);
+    }
+
+    /* Hero */
+    header {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+      url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+      animation: fadeIn 2s ease;
+    }
+
+    .hero-content h1 {
+      font-size: 65px;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+    }
+
+    .hero-content p {
+      font-size: 22px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #ffd60a;
+      color: #003566;
+      padding: 15px 35px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.4s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      background: white;
+    }
+
+    /* Section */
+    section {
+      padding: 100px 10%;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 42px;
+      margin-bottom: 15px;
+      color: #0077b6;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 50px;
+      font-size: 18px;
+    }
+
+    /* Cards */
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 20px;
+      transition: 0.4s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, #00b4d8, #0077b6);
+      left: 0;
+      top: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      color: #023e8a;
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #555;
+      line-height: 1.8;
+    }
+
+    /* Statistik */
+    .stats {
+      background: linear-gradient(to right, #0077b6, #00b4d8);
+      color: white;
+      padding: 70px 10%;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .stat-box p {
+      font-size: 18px;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: 0.4s;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Contact */
+    .contact-box {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .contact-box p {
+      margin: 15px 0;
+      font-size: 18px;
+    }
+
+    /* Footer */
+    footer {
+      background: #023e8a;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer p {
+      margin: 10px 0;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .hero-content h1 {
+        font-size: 42px;
+      }
+
+      .hero-content p {
+        font-size: 18px;
+      }
+
+      nav .menu {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="menu">
+      <a href="#penyebab">Penyebab</a>
+      <a href="#dampak">Dampak</a>
+      <a href="#solusi">Solusi</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#olahan">Olahan Sampah</a>
+      
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header>
+    <div class="hero-content">
+      <h1>Solusi Sampah di Pantai Bengkulu</h1>
+      <p>
+        Sampah di pantai Bengkulu menjadi masalah lingkungan serius yang dapat merusak ekosistem laut, mengurangi keindahan wisata, dan mengancam kehidupan masyarakat pesisir.
+      </p>
+      <a href="#solusi" class="btn">Lihat Solusi</a>
+    </div>
+  </header>
+
+  <!-- Hasil Olahan Sampah -->
+<section id="olahan">
+  <h2>Hasil Olahan Sampah Pantai</h2>
+  <p class="subtitle">
+    Sampah pantai tidak selalu menjadi limbah. Jika diolah dengan baik,
+    sampah dapat menjadi barang yang bermanfaat dan bernilai ekonomi.
+  </p>
+
+  <div class="card-container">
+
+    <div class="card">
+      <h3>🪵 Limbah Kayu Pantai (Driftwood)</h3>
+      <p>
+        Kayu yang terbawa ombak dapat diolah menjadi furniture unik,
+        hiasan rumah, lampu hias, dan kerajinan dekorasi.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>♻️ Sampah Plastik</h3>
+      <p>
+        Botol dan plastik bekas dapat dijadikan tas belanja,
+        pot bunga, dompet, ecobrick, dan hiasan kreatif.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🐚 Cangkang Kerang</h3>
+      <p>
+        Cangkang kerang dapat dibuat menjadi gantungan kunci,
+        bros, kalung, bingkai foto, dan souvenir wisata.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🧴 Pecahan Kaca Laut</h3>
+      <p>
+        Pecahan kaca yang halus karena ombak bisa dijadikan
+        perhiasan, mozaik, dan dekorasi seni.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>🥫 Kaleng dan Logam Bekas</h3>
+      <p>
+        Kaleng bekas dapat diubah menjadi miniatur,
+        tempat pensil, lampu hias, dan karya seni unik.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+  <!-- Penyebab -->
+  <section id="penyebab">
+    <h2>Penyebab Sampah</h2>
+    <p class="subtitle">Beberapa faktor utama penyebab banyaknya sampah di pantai Bengkulu.</p>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>🚯 Buang Sampah Sembarangan</h3>
+        <p>Masih banyak pengunjung yang membuang sampah sembarangan tanpa memikirkan dampaknya bagi lingkungan.</p>
+      </div>
+
+      <div class="card">
+        <h3>🗑️ Kurang Tempat Sampah</h3>
+        <p>Kurangnya fasilitas tempat sampah membuat sampah menumpuk di sekitar pantai.</p>
+      </div>
+
+      <div class="card">
+        <h3>🌊 Sampah Kiriman</h3>
+        <p>Sampah dari sungai dan laut terbawa arus hingga sampai ke kawasan pantai Bengkulu.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dampak -->
+  <section id="dampak" style="background:#eef8ff;">
+    <h2>Dampak Sampah</h2>
+    <p class="subtitle">Sampah memberikan dampak buruk bagi lingkungan dan pariwisata.</p>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>🏖️ Pantai Menjadi Kotor</h3>
+        <p>Keindahan pantai berkurang akibat sampah yang berserakan di berbagai area.</p>
+      </div>
+
+      <div class="card">
+        <h3>🐟 Merusak Ekosistem Laut</h3>
+        <p>Sampah plastik dapat membahayakan ikan, penyu, dan hewan laut lainnya.</p>
+      </div>
+
+      <div class="card">
+        <h3>🤢 Menimbulkan Bau</h3>
+        <p>Sampah yang membusuk menyebabkan bau tidak sedap dan mengganggu kenyamanan.</p>
+      </div>
+
+      <div class="card">
+        <h3>📉 Wisata Berkurang</h3>
+        <p>Wisatawan menjadi kurang tertarik mengunjungi pantai yang kotor dan tidak terawat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistik -->
+  <section class="stats">
+    <div class="stats-container">
+      <div class="stat-box">
+        <h3>70%</h3>
+        <p>Sampah Plastik</p>
+      </div>
+
+      <div class="stat-box">
+        <h3>100+</h3>
+        <p>Relawan Peduli Pantai</p>
+      </div>
+
+      <div class="stat-box">
+        <h3>50kg</h3>
+        <p>Sampah Dibersihkan</p>
+      </div>
+
+      <div class="stat-box">
+        <h3>1 Pantai</h3>
+        <p>Untuk Masa Depan Bersih</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solusi -->
+  <section id="solusi">
+    <h2>Solusi Mengatasi Sampah</h2>
+    <p class="subtitle">Langkah sederhana namun penting untuk menjaga kebersihan pantai.</p>
+
+    <div class="card-container">
+      <div class="card">
+        <h3>🗑️ Menyediakan Tempat Sampah</h3>
+        <p>Menambah tempat sampah di area wisata agar pengunjung lebih mudah menjaga kebersihan.</p>
+      </div>
+
+      <div class="card">
+        <h3>🤝 Gotong Royong</h3>
+        <p>Mengadakan kegiatan bersih pantai bersama masyarakat, pelajar, dan relawan.</p>
+      </div>
+
+      <div class="card">
+        <h3>📚 Edukasi Masyarakat</h3>
+        <p>Memberikan sosialisasi pentingnya menjaga lingkungan dan membuang sampah pada tempatnya.</p>
+      </div>
+
+      <div class="card">
+        <h3>♻️ Daur Ulang Sampah</h3>
+        <p>Mengolah sampah menjadi barang yang berguna dan bernilai ekonomi.</p>
+      </div>
+
+      <div class="card">
+        <h3>🚫 Kurangi Plastik</h3>
+        <p>Mengurangi penggunaan plastik sekali pakai demi menjaga kebersihan laut.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeri -->
+  <section id="galeri" style="background:#eef8ff;">
+    <h2>Galeri Pantai</h2>
+    <p class="subtitle">Dokumentasi kondisi pantai bersih dan aksi peduli lingkungan.</p>
+
+   <div class="gallery">
+  <img src="img/kotor.jpg" alt="Pantai Kotor">
+  <img src="img/kotor2.jpeg" alt="Pantai Kotor">
+  <img src="img/kotor3.jpg" alt="Pantai Bengkulu">
+  <img src="img/bersih.jpg" alt="Aksi Bersih Pantai">
+  <img src="img/bersih2.jpg" alt="Aksi Bersih Pantai">
+  <img src="img/bersih3.webp" alt="Aksi Bersih Pantai">
+</div>
+  </section>
+
+ 
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Solusi Sampah di Pantai Bengkulu</p>
+    <p>🌊 Jaga Pantai, Jaga Laut, Jaga Masa Depan 🌊</p>
+  </footer>
+
+</body>
+</html>
